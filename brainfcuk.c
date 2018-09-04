@@ -5,7 +5,7 @@
 #include <stdarg.h>
 #include <stdnoreturn.h>
 
-typedef uint64_t Cell;
+typedef uint8_t Cell;
 
 typedef struct {
 	Cell *tape;
@@ -64,6 +64,8 @@ void interpret(const char *bf, bf_state state) {
 				if ((state.ptr--) == 0) {
 					state.ptr = state.tapesize-1;
 				}
+				// past elronnd: what athe FUCK were you thinking.  This literally makes no sense
+				// I should introduce some kind of memory mapping, instead...
 				break;
 			case '+':
 				state.tape[state.ptr]++;
